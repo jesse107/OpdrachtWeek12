@@ -11,9 +11,10 @@ namespace OpdrachtWeek12.Data
     {
 
         public MijnContext(DbContextOptions options) : base() { }
- 
+
         protected override void OnConfiguring(DbContextOptionsBuilder b) =>
-        b.UseSqlite("Data Source=database.db");
+        //b.UseSqlite("Data Source=database.db");
+        b.UseInMemoryDatabase("Studenten");
         public DbSet<Student> Studenten { get; set; }
     }
 }

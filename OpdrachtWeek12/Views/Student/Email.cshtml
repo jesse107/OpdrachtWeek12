@@ -1,0 +1,17 @@
+﻿@model WPFW_Week10b.Models.Student
+@{
+    Layout = "";
+
+}
+
+<h1>Email</h1>
+@if (Model == null)
+{
+    <div>Er zijn geen studenten gevonden.</div>
+}
+else
+{
+    <div>De e-mail van @Model.StudentNummer is: <br/> @Model.Email</div>
+}
+
+

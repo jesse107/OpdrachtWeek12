@@ -11,6 +11,7 @@ namespace OpdrachtWeek12.Tests
 {
     public class UnitTest1
     {
+        
         [Fact]
         public void Test1()
         {
@@ -29,6 +30,25 @@ namespace OpdrachtWeek12.Tests
             var result = Xunit.Assert.IsType<ViewResult>(c.Index());
             var model = Xunit.Assert.IsType<List<Student>>(result.Model);
             Xunit.Assert.True(model.Count == 5);
+
+        }
+
+        [Fact]
+
+        public void Test2()
+        {
+            var options = new DbContextOptionsBuilder<MijnContext>()
+                .UseInMemoryDatabase("Naam")
+                .Options;
+            var context = new MijnContext(options);
+            context.Studenten.Add(new Student { Naam = "Bob" });
+            context.Studenten.Add(new Student { Naam = "Bill" });
+            context.Studenten.Add(new Student { Naam = "Jacob-Allexander" });
+            context.Studenten.Add(new Student { Naam = "Alice" });
+            context.Studenten.Add(new Student { Naam = "Joey" });
+
+            context.SaveChanges();
+            HomeController c = new HomeController(context);
 
         }
     }

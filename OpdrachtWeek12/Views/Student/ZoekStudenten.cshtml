@@ -1,0 +1,22 @@
+﻿@using System.Text.RegularExpressions;
+@model List<Student>
+@{
+    Layout = "";
+}
+
+<h1>Zoek Studenten</h1>
+
+@if (Char.IsLetter(ViewData["Letter"].ToString(), 0))
+{
+    <div>Er is/zijn @Model.Count() leerling(en) gevonden met de letter @ViewData["Letter"].</div>
+    @foreach (Student s in Model)
+    {
+        <div>@s.Voornaam met nummer @s.StudentNummer en e-mail @s.Email.</div>
+    }
+
+}
+else
+{
+    <div>Er zijn geen leerlingen gevonden.</div>
+}
+
